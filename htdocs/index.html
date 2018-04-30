@@ -1,0 +1,44 @@
+<%
+  title = "Lua Webserver"
+  
+  if Visitors == nil
+  then
+    Visitors = 0
+  end
+  
+  Visitors = Visitors + 1
+%>
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+
+  <body>
+    <div class="width-constraint">
+      <h1>It works!</h1>
+      <hr />
+      
+      <h4>Rendering Lua values</h4>
+      <ul>
+        <li>Request URI = <%= request.path() %></li>
+        <li>Page visits = <%= Visitors %></li>
+        <li>Formatted Lua date = <%= os.date("%a, %d %b %Y %H:%M:%S UTC") %></li>
+      </ul>
+      
+      <h4>Rendering engine loop example</h4>
+      <ul>
+        <% for i = 1, 10 do [[
+          <li>i = ]] print(i) [[</li>
+        ]] end %>
+      </ul>
+      
+      <hr />
+      <p>Written by Conner Harkness</p>
+    </div>
+  </body>
+</html>
